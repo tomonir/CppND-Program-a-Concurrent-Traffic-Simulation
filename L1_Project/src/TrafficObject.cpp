@@ -26,4 +26,6 @@ TrafficObject::TrafficObject()
 TrafficObject::~TrafficObject()
 {
     // Task L1.1 : Set up a thread barrier that ensures that all the thread objects in the member vector _threads are joined.
+    for (int i=0;i<_threads.size();i++)
+        _threads.at(i).join();
 }
