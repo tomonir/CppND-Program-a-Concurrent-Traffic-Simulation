@@ -4,6 +4,7 @@
 #include "Intersection.h"
 #include "Vehicle.h"
 
+
 Vehicle::Vehicle()
 {
     _currStreet = nullptr;
@@ -78,7 +79,12 @@ void Vehicle::drive()
                 // the object _currDestination and a shared pointer to this using the get_shared_this() function. 
                 // Then, wait for the data to be available before proceeding to slow down.
 
+                auto ftr = std::async(&Intersection::addVehicleToQueue,_currDestination, get_shared_this() );
+                ftr.wait();
                 // slow down and set intersection flag
+
+                
+                
                 _speed /= 10.0;
                 hasEnteredIntersection = true;
             }
